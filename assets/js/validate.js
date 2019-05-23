@@ -80,7 +80,7 @@ jQuery(document).ready(function($) {
 			else var str = $(this).serialize();		
 				$.ajax({
 				type: "POST",
-				url: "contact/contact.php",
+				url: "https://btxdev.000webhostapp.com/contact/contact.php",
 				data: str,
 				success: function(msg){
 			$("#sendmessage").addClass("show");
