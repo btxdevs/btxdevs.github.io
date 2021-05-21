@@ -244,17 +244,6 @@
     <script src="onboarding/js/vu.face.auth.js"></script>
 
     <script>
-     if ('serviceWorker' in navigator) {
-        window.addEventListener('load', function() {
-          navigator.serviceWorker.register('sw.js').then(function(registration) {
-            // Registration was successful
-            console.log('ServiceWorker registration successful with scope: ', registration.scope);
-          }, function(err) {
-            // registration failed :(
-            console.log('ServiceWorker registration failed: ', err);
-          });
-        });
-      }
 
 
 
@@ -272,6 +261,13 @@
             vu.face.auth.start().then(
                 function(res) {
                     if (res.identical === true){
+                        try {
+                            var userId = document.getElementById("vu.sop.ui.userName").value;
+                            HostApp.loginOK(userId, res);
+                          } catch (error) {
+                            console.error(error);
+                          }
+
                         vu.sop.ui.alert('Autenticación Exitosa<br>Confianza ' + Math.round(response.confidence*100) + '%').then(function (res) {
                             window.location.reload(false);
                         })
