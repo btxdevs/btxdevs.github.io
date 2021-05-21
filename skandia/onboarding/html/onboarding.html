@@ -1,0 +1,144 @@
+<!-- <div id="vu.sop" style="margin: auto; width: 640px; height: 480px; background-color: black; overflow: hidden"> -->
+    <div id="vu.sop.ui" >
+        <div id="vu.sop.ui.videoContainer">
+            <!-- VIDEO -->
+            <video id="vu.sop.ui.video" autoplay muted playsinline></video>
+
+            <!-- DOC -->
+            <div id="vu.sop.document.ui.background" class="vu.sop.document.ui.background"></div>
+            <div id="vu.sop.document.ui.box"> </div>
+
+            <!-- FACE -->
+            <div id="vu.sop.ui.faceCircleLeft"        class="vu.sop.ui.faceCircle" style="transform: rotate(180deg);"></div>
+            <div id="vu.sop.ui.faceCircleLeftTop"     class="vu.sop.ui.faceCircle" style="transform: rotate(225deg);"></div>
+            <div id="vu.sop.ui.faceCircleTop"         class="vu.sop.ui.faceCircle" style="transform: rotate(270deg);"></div>
+            <div id="vu.sop.ui.faceCircleRightTop"    class="vu.sop.ui.faceCircle" style="transform: rotate(315deg);"></div>
+            <div id="vu.sop.ui.faceCircleRight"       class="vu.sop.ui.faceCircle" ></div>
+            <div id="vu.sop.ui.faceCircleRightBottom" class="vu.sop.ui.faceCircle" style="transform: rotate(45deg);"></div>
+            <div id="vu.sop.ui.faceCircleBottom"      class="vu.sop.ui.faceCircle" style="transform: rotate(90deg);"></div>
+            <div id="vu.sop.ui.faceCircleLeftBottom"  class="vu.sop.ui.faceCircle" style="transform: rotate(135deg);"></div>
+            <div id="vu.face.ui.gestures.circle"      class="vu.sop.ui.faceCircle" ></div>
+
+            <div id="vu.sop.ui.faceDot"></div>
+            <div id="vu.sop.ui.faceOk"></div>
+
+            <canvas id='vu.sop.ui.faceTransferCanvas'></canvas>
+            <canvas id='vu.sop.ui.documentFace' style="display: none;"></canvas>
+        </div>
+
+
+        <!-- Document Select Upload Metod -->
+        <div id="vu.sop.ui.documentSelectUploadMetod" class="vu.sop.ui.fullSizeDiv" style="background-color: white;">
+            <div class="vu.sop.ui.innerVerticalAlign" style="margin-top: -2em;">
+
+                <div style="width: 50%; float: left;">
+                    <a href="javascript:vu.sop.steps.takePictureDocument()" class="vu.sop.ui.aPlainLink">
+                        <img style="width: 30%" src="data:image/svg+xml;base64,PHN2ZyBhcmlhLWhpZGRlbj0idHJ1ZSIgZm9jdXNhYmxlPSJmYWxzZSIgZGF0YS1wcmVmaXg9ImZhcyIgZGF0YS1pY29uPSJjYW1lcmEtcmV0cm8iIGNsYXNzPSJzdmctaW5saW5lLS1mYSBmYS1jYW1lcmEtcmV0cm8gZmEtdy0xNiIgcm9sZT0iaW1nIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48cGF0aCBmaWxsPSJjdXJyZW50Q29sb3IiIGQ9Ik00OCAzMkMyMS41IDMyIDAgNTMuNSAwIDgwdjM1MmMwIDI2LjUgMjEuNSA0OCA0OCA0OGg0MTZjMjYuNSAwIDQ4LTIxLjUgNDgtNDhWODBjMC0yNi41LTIxLjUtNDgtNDgtNDhINDh6bTAgMzJoMTA2YzMuMyAwIDYgMi43IDYgNnYyMGMwIDMuMy0yLjcgNi02IDZIMzhjLTMuMyAwLTYtMi43LTYtNlY4MGMwLTguOCA3LjItMTYgMTYtMTZ6bTQyNiA5NkgzOGMtMy4zIDAtNi0yLjctNi02di0zNmMwLTMuMyAyLjctNiA2LTZoMTM4bDMwLjItNDUuM2MxLjEtMS43IDMtMi43IDUtMi43SDQ2NGM4LjggMCAxNiA3LjIgMTYgMTZ2NzRjMCAzLjMtMi43IDYtNiA2ek0yNTYgNDI0Yy02Ni4yIDAtMTIwLTUzLjgtMTIwLTEyMHM1My44LTEyMCAxMjAtMTIwIDEyMCA1My44IDEyMCAxMjAtNTMuOCAxMjAtMTIwIDEyMHptMC0yMDhjLTQ4LjUgMC04OCAzOS41LTg4IDg4czM5LjUgODggODggODggODgtMzkuNSA4OC04OC0zOS41LTg4LTg4LTg4em0tNDggMTA0Yy04LjggMC0xNi03LjItMTYtMTYgMC0zNS4zIDI4LjctNjQgNjQtNjQgOC44IDAgMTYgNy4yIDE2IDE2cy03LjIgMTYtMTYgMTZjLTE3LjYgMC0zMiAxNC40LTMyIDMyIDAgOC44LTcuMiAxNi0xNiAxNnoiPjwvcGF0aD48L3N2Zz4=">
+                        <p id="vu.sop.ui.documentSelectMetod.cameraText">Camara</p>
+                    </a>
+                </div>
+                <div style="width: 49%; float: left; height: 33%">
+                    <a href="javascript:vu.sop.steps.uploadFrontDocumentPicture()" class="vu.sop.ui.aPlainLink">
+                        <img style="width: 22%; margin-bottom: 5px;" src="data:image/svg+xml;base64,PHN2ZyBhcmlhLWhpZGRlbj0idHJ1ZSIgZm9jdXNhYmxlPSJmYWxzZSIgZGF0YS1wcmVmaXg9ImZhcyIgZGF0YS1pY29uPSJmaWxlLXVwbG9hZCIgY2xhc3M9InN2Zy1pbmxpbmUtLWZhIGZhLWZpbGUtdXBsb2FkIGZhLXctMTIiIHJvbGU9ImltZyIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB2aWV3Qm94PSIwIDAgMzg0IDUxMiI+PHBhdGggZmlsbD0iY3VycmVudENvbG9yIiBkPSJNMjI0IDEzNlYwSDI0QzEwLjcgMCAwIDEwLjcgMCAyNHY0NjRjMCAxMy4zIDEwLjcgMjQgMjQgMjRoMzM2YzEzLjMgMCAyNC0xMC43IDI0LTI0VjE2MEgyNDhjLTEzLjIgMC0yNC0xMC44LTI0LTI0em02NS4xOCAyMTYuMDFIMjI0djgwYzAgOC44NC03LjE2IDE2LTE2IDE2aC0zMmMtOC44NCAwLTE2LTcuMTYtMTYtMTZ2LTgwSDk0LjgyYy0xNC4yOCAwLTIxLjQxLTE3LjI5LTExLjI3LTI3LjM2bDk2LjQyLTk1LjdjNi42NS02LjYxIDE3LjM5LTYuNjEgMjQuMDQgMGw5Ni40MiA5NS43YzEwLjE1IDEwLjA3IDMuMDMgMjcuMzYtMTEuMjUgMjcuMzZ6TTM3NyAxMDVMMjc5LjEgN2MtNC41LTQuNS0xMC42LTctMTctN0gyNTZ2MTI4aDEyOHYtNi4xYzAtNi4zLTIuNS0xMi40LTctMTYuOXoiPjwvcGF0aD48L3N2Zz4=">
+                        <p id="vu.sop.ui.documentSelectMetod.fileText">Archivos</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Document File Upload front -->
+        <div id="vu.sop.ui.documentFileUploadFront" class="vu.sop.ui.fullSizeDiv" style="background-color: white;">
+            <div class="vu.sop.ui.innerVerticalAlign" style="margin-top: -2em;">
+                <label for="documentFileUploadFrontInput" style="display: inline-block; padding: 6px 12px; cursor: pointer;">
+                    <img style="width: 100%;" src="data:image/svg+xml;base64,PHN2ZyBhcmlhLWhpZGRlbj0idHJ1ZSIgZm9jdXNhYmxlPSJmYWxzZSIgZGF0YS1wcmVmaXg9ImZhcyIgZGF0YS1pY29uPSJhcnJvdy1jaXJjbGUtdXAiIGNsYXNzPSJzdmctaW5saW5lLS1mYSBmYS1hcnJvdy1jaXJjbGUtdXAgZmEtdy0xNiIgcm9sZT0iaW1nIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48cGF0aCBmaWxsPSJjdXJyZW50Q29sb3IiIGQ9Ik04IDI1NkM4IDExOSAxMTkgOCAyNTYgOHMyNDggMTExIDI0OCAyNDgtMTExIDI0OC0yNDggMjQ4UzggMzkzIDggMjU2em0xNDMuNiAyOC45bDcyLjQtNzUuNVYzOTJjMCAxMy4zIDEwLjcgMjQgMjQgMjRoMTZjMTMuMyAwIDI0LTEwLjcgMjQtMjRWMjA5LjRsNzIuNCA3NS41YzkuMyA5LjcgMjQuOCA5LjkgMzQuMy40bDEwLjktMTFjOS40LTkuNCA5LjQtMjQuNiAwLTMzLjlMMjczIDEwNy43Yy05LjQtOS40LTI0LjYtOS40LTMzLjkgMEwxMDYuMyAyNDAuNGMtOS40IDkuNC05LjQgMjQuNiAwIDMzLjlsMTAuOSAxMWM5LjYgOS41IDI1LjEgOS4zIDM0LjQtLjR6Ij48L3BhdGg+PC9zdmc+">
+                </label>
+                <input id="documentFileUploadFrontInput" type="file" style="display: none;" onchange="vu.sop.steps.uploadFrontDocumentPictureResolve(this.files)">
+            </div>
+        </div>
+
+        <!-- Document File Upload Back -->
+        <div id="vu.sop.ui.documentFileUploadBack" class="vu.sop.ui.fullSizeDiv" style="background-color: white;">
+            <div class="vu.sop.ui.innerVerticalAlign" style="margin-top: -2em;">
+                <label for="documentFileUploadBackInput" style="display: inline-block; padding: 6px 12px; cursor: pointer;">
+                    <img style="width: 100%" src="data:image/svg+xml;base64,PHN2ZyBhcmlhLWhpZGRlbj0idHJ1ZSIgZm9jdXNhYmxlPSJmYWxzZSIgZGF0YS1wcmVmaXg9ImZhcyIgZGF0YS1pY29uPSJhcnJvdy1jaXJjbGUtdXAiIGNsYXNzPSJzdmctaW5saW5lLS1mYSBmYS1hcnJvdy1jaXJjbGUtdXAgZmEtdy0xNiIgcm9sZT0iaW1nIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48cGF0aCBmaWxsPSJjdXJyZW50Q29sb3IiIGQ9Ik04IDI1NkM4IDExOSAxMTkgOCAyNTYgOHMyNDggMTExIDI0OCAyNDgtMTExIDI0OC0yNDggMjQ4UzggMzkzIDggMjU2em0xNDMuNiAyOC45bDcyLjQtNzUuNVYzOTJjMCAxMy4zIDEwLjcgMjQgMjQgMjRoMTZjMTMuMyAwIDI0LTEwLjcgMjQtMjRWMjA5LjRsNzIuNCA3NS41YzkuMyA5LjcgMjQuOCA5LjkgMzQuMy40bDEwLjktMTFjOS40LTkuNCA5LjQtMjQuNiAwLTMzLjlMMjczIDEwNy43Yy05LjQtOS40LTI0LjYtOS40LTMzLjkgMEwxMDYuMyAyNDAuNGMtOS40IDkuNC05LjQgMjQuNiAwIDMzLjlsMTAuOSAxMWM5LjYgOS41IDI1LjEgOS4zIDM0LjQtLjR6Ij48L3BhdGg+PC9zdmc+">
+                </label>
+                <input id="documentFileUploadBackInput" type="file" style="display: none;" onchange="vu.sop.steps.uploadBackDocumentPictureResolve(this.files)">
+            </div>
+        </div>
+
+        <!-- USER -->
+        <div id="vu.sop.ui.userContainer" class="vu.sop.ui.fullSizeDiv">
+            <div class="vu.sop.ui.innerVerticalAlign" style="margin-top: -2em;">
+                <form id="vu.sop.ui.userForm" action="#" onsubmit="let send = vu.sop.ui.user.do(); return false;">
+                <div class="vu.sop.input-group vu.sop.mb-3">
+                    <input minlength="5"
+                           id='vu.sop.ui.userName'
+                           type="input"
+                           class="vu.sop.form-control"
+                           placeholder="Correo de usuario"
+                           aria-describedby="basic-addon2">
+                    <div class="vu.sop.input-group-append">
+                        <button id='vu.sop.ui.userNameSendBtn' class="vu.sop.btn vu.sop.btn-outline-secondary" type="submit">
+                            Iniciar
+                        </button>
+                    </div>
+                </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Alert -->
+        <div id="vu.sop.ui.autoplay" class="vu.sop.ui.fullSizeDiv" style="background-color: white;">
+            <div class="vu.sop.ui.innerVerticalAlign">
+                <div>Se requiere permisos para utilizar la camara</div><br><br>
+                <button class="vu.sop.btn vu.sop.btn-outline-secondary" onclick="vu.sop.camera.video.play()" style="border: 1px solid;">
+                    Aceptar
+                </button>
+            </div>
+        </div>
+
+        <!-- Alert -->
+        <div id="vu.sop.ui.alert" class="vu.sop.ui.fullSizeDiv">
+            <div class="vu.sop.ui.innerVerticalAlign">
+                <div id="vu.sop.ui.alertText"></div><br><br>
+                <button class="vu.sop.btn vu.sop.btn-outline-secondary" id="vu.sop.ui.alertButton" onclick="vu.sop.ui.alertClose()">
+                    Cerrar
+                </button>
+            </div>
+        </div>
+        <!-- LOADING -->
+        <div id="vu.sop.ui.whiteLoading" class="vu.sop.ui.fullSizeDiv" style="display: block">
+            <div id="vu.sop.ui.whiteLoadingImg" class="vu.sop.ui.innerVerticalAlign">
+                                
+            </div>
+        </div>
+
+        <div id="vu.sop.ui.loading" class="vu.sop.ui.fullSizeDiv">
+            <div id="vu.sop.ui.loadingImg" class="vu.sop.ui.innerVerticalAlign">
+                
+            </div>
+        </div>
+
+        <!-- COUNTER -->
+        <div id="vu.sop.ui.counter" class="vu.sop.ui.innerBottomRight">
+            <span class="fa-stack fa-4x">
+                <span class="fa fa-circle fa-stack-2x"></span>
+                <strong id="vu.sop.ui.counterText" class="fa-stack-1x fa-inverse">
+                </strong>
+            </span>
+        </div>
+
+        <!-- Bottom Text -->
+        <div id="vu.sop.ui.bottomText"></div>
+
+        <!-- Photo flash effect -->
+        <div id="vu.sop.ui.flash" class="vu.sop.ui.fullSizeDiv"></div>
+
+        <!-- Alert -->
+        <div id="vu.sop.ui.endScreen" class="vu.sop.ui.fullSizeDiv" style="background-color: white;">
+            <div class="vu.sop.ui.innerVerticalAlign">
+                Onboarding finalizado
+            </div>
+        </div>
+    </div>
+<!-- </div> -->
