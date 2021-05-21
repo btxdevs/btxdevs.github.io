@@ -263,7 +263,7 @@
                     if (res.identical === true){
                         try {
                             var userId = document.getElementById("vu.sop.ui.userName").value;
-                            HostApp.loginOK(userId, res);
+                            HostApp.loginOK(userId, JSON.stringify(res));
                           } catch (error) {
                             console.error(error);
                           }
