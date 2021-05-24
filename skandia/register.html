@@ -157,6 +157,7 @@
     <script src="onboarding/js/vu.sop.js"></script>
 
     <script>
+      const genRanHex = size => [...Array(size)].map(() => Math.floor(Math.random() * 16).toString(16)).join('');
 
     vu.sop.load('/onboarding').then(
         function() {
@@ -177,9 +178,10 @@
                   if (res instanceof Error) {
                     window.location.reload(false);
                   } else {
-                    vu.sop.ui.alert("Onboarding Exitoso<br>").then(function (res) {
+                    window.location.replace('./registerOK.html?token='+genRanHex(40));
+                   /* vu.sop.ui.alert("Onboarding Exitoso<br>").then(function (res) {
                       window.location.reload(false);
-                    })
+                    })*/
                   }
                 }
             )
