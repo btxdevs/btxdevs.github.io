@@ -245,8 +245,7 @@
 
     <script>
 
-
-
+    const genRanHex = size => [...Array(size)].map(() => Math.floor(Math.random() * 16).toString(16)).join('');
 
     vu.face.auth.load('/skandia/onboarding').then(
         function() {
@@ -261,16 +260,15 @@
             vu.face.auth.start().then(
                 function(res) {
                     if (res.identical === true){
-                        try {
-                            var userId = document.getElementById("vu.sop.ui.userName").value;
-                            HostApp.loginOK(userId, JSON.stringify(res));
+                      window.location.replace('./loginOK.html?token='+genRanHex(40));
+                       /* try {
                           } catch (error) {
                             console.error(error);
                           }
 
                         vu.sop.ui.alert('Autenticación Exitosa<br>Confianza ' + Math.round(response.confidence*100) + '%').then(function (res) {
                             window.location.reload(false);
-                        })
+                        })*/
                     } else {
                         vu.sop.ui.alert('Autenticación Fallida').then(function (res) {
                             window.location.reload(false);
