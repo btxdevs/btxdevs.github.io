@@ -321,11 +321,10 @@
         }
     }
 
-    function enterCredentials(userJson){
-         var user = JSON.parse(userJson);
-            $("#documento").val(user.idNumber);
-            $("#tipodoc").val(user.idType);
-            $("#password").val(user.password);
+    function enterCredentials(idNumber, idType, password){
+            $("#documento").val(idNumber);
+            $("#tipodoc").val(idType);
+            $("#password").val(password);
             $("#btnEnter").trigger('click');
     }
 
