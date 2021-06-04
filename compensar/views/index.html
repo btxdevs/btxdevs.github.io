@@ -148,7 +148,7 @@
                                 </div>
                             </form>
                                 <div class="mx-auto d-grid gap-2 mt-3">
-                                    <button id="btnBiometric" class="btn btn-primary" onclick="fingerprintAuth()">
+                                    <button id="btnBiometric" style="display: none;" class="btn btn-primary" onclick="fingerprintAuth()">
                                         Autenticacion biometrica
                                     </button>
                                 </div>
@@ -331,7 +331,7 @@
     function biometricAuthAvailable(){
         //Android
         try{
-            return HostApp.fingerprintAuthAvailable();
+            return HostApp.biometricAuthAvailable();
         }catch(error){
             console.log(error);
         }
