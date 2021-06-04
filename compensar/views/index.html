@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="iso-8859-1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Compensar</title>
+    <script src="https://kit.fontawesome.com/7a1fec5b9a.js" crossorigin="anonymous"></script>
+    <meta content="text/html;" charset="utf-8" />
+    <link href="../lib/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../lib/css/style.css" />
+    <link rel="stylesheet" href="../lib/jquery-ui-1.12.1/jquery-ui.css" />
+
+    <link rel="stylesheet" href="../lib/indicativo/css/intlTelInput.css" />
+
+    <script src="../lib/jquery-3.6.0.min.js"></script>
+</head>
+
+<body>
+    <style>
+        .alert-light {
+            border-color: #ffc107;
+            margin-top: 1rem !important;
+        }
+
+        .alert-link {
+            color: #ff6600 !important;
+            text-decoration: underline !important;
+            font-weight: normal;
+        }
+
+        .orange {
+            color: #ff6600 !important;
+        }
+
+        .fa-exclamation-triangle {
+            color: #ffc107 !important;
+            margin-right: 10px;
+        }
+    </style>
+    <div class="container">
+        <div class="row">
+            <div class="
+            card
+            position-absolute
+            top-50
+            start-50
+            translate-middle
+            col-lg-4
+          ">
+                <div class="card-body">
+                    <button type="button" class="btn-close" aria-label="Close"></button>
+                    <h2 class="card-title text-center">
+                        <img src="../media/logo_compensar.png" class="logo" />
+                    </h2>
+                    <br />
+                    <ul class="nav nav-tabs justify-content-center" id="myTab" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active" id="ingresar-tab" data-bs-toggle="tab"
+                                data-bs-target="#ingresar" type="button" role="tab" aria-controls="ingresar"
+                                aria-selected="true">
+                                Ingresar
+                            </button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="crear-cuenta-tab" data-bs-toggle="tab"
+                                data-bs-target="#crear-cuenta" type="button" role="tab" aria-controls="crear-cuenta"
+                                aria-selected="false">
+                                Crear cuenta
+                            </button>
+                        </li>
+                    </ul>
+                    <div class="tab-content" id="myTabContent">
+                        <!--ingresar-->
+                        <div class="tab-pane fade show active" id="ingresar" role="tabpanel"
+                            aria-labelledby="ingresar-tab">
+                            <form action="javascript:registro();">
+                                <div id="alertvalida" class="alert alert-light shadow p-3 bg-body rounded" role="alert">
+                                    <p>
+                                        <i class="fas fa-exclamation-triangle"></i>&iexcl;Atencion!
+                                    </p>
+                                    <p>
+                                        No se pudo ingresar con la combinacion de usuario y
+                                        contrase&ntilde;a indicadas. <br />Rectifica tus datos o
+                                        <span class="orange">entra
+                                            <a href="#" onclick="recuperar();" class="alert-link">aqui</a>
+                                            para recuperar tu contrase&ntilde;a</span>
+                                    </p>
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                        aria-label="Close"></button>
+                                </div>
+
+                                <div class="row" method="post">
+                                    <label class="col-1 col-form-label form-ico">
+                                        <i class="far fa-address-card"></i>
+                                    </label>
+
+                                    <div class="form-group custom-select col-11" id="dtipodoc">
+                                        <label for="tipodoc" class="form-label">Tipo documento</label>
+                                        <select id="tipodoc" class="form-select" required>
+                                            <option disabled>Seleccione</option>
+                                            <option value="cc" class="select-option">
+                                                Cedula de ciudadania
+                                            </option>
+                                            <option value="ce" class="select-option">
+                                                Cedula de extranjeria
+                                            </option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-1"></div>
+                                    <div class="form-group col-11">
+                                        <label for="documento" class="form-label" id="lbndocumento">Numero de
+                                            documento</label>
+                                        <input type="text" class="form-control" id="documento" required />
+                                    </div>
+                                    <div class="invalid-tooltip">
+                                        Please choose a unique and valid username.
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <label class="col-1 col-form-label form-ico">
+                                        <i class="fas fa-key"></i>
+                                    </label>
+                                    <div class="col-11 form-group">
+                                        <label for="password" class="form-label">Contrase&ntilde;a</label>
+                                        <div class="form-group">
+                                            <input type="password" class="form-control pass" id="password" required />
+                                            <span class="far fa-eye password-icon show-password"></span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="mx-auto" style="width: 200px">
+                                    <label class="enlace"><a href="#" onclick="recuperar();">&#191;Olvidaste tu
+                                            contrase&ntilde;a?</a></label><br />
+                                    <br />
+                                </div>
+
+                                <div class="mx-auto d-grid gap-2">
+                                    <button id="btnEnter" class="btn btn-primary" type="submit" onclick="ingresar()">
+                                        Ingresar
+                                    </button>
+                                </div>
+                            </form>
+                                <div class="mx-auto d-grid gap-2 mt-3">
+                                    <button id="btnFingerprint" class="btn btn-primary" onclick="fingerprintAuth()">
+                                        Autenticacion por huella
+                                    </button>
+                                </div>
+                        </div>
+
+                        <!--Crear cuenta-->
+                        <div class="tab-pane fade" id="crear-cuenta" role="tabpanel" aria-labelledby="crear-cuenta-tab">
+                            <form method="get" accept-charset="utf-8" action="javascript:valido();">
+                                <div class="row">
+                                    <label class="col-1 col-form-label form-ico">
+                                        <i class="far fa-address-card"></i>
+                                    </label>
+
+                                    <div class="form-group custom-select col-11" id="drtipodoc">
+                                        <label for="rtipodoc" class="form-label">Tipo documento</label>
+                                        <select class="form-select" id="rtipodoc" required>
+                                            <option disabled>Seleccione</option>
+                                            <option value="Cedula de ciudadania" class="select-option">
+                                                Cedula de ciudadania
+                                            </option>
+                                            <option value="Cedula de extranjeria" class="select-option">
+                                                Cedula de extranjeria
+                                            </option>
+                                            <option class="NIT" class="select-option">NIT</option>
+                                            <option class="Tarjeta de Identidad" class="select-option">
+                                                Tarjeta de Identidad
+                                            </option>
+                                            <option class="Pasaporte" class="select-option">
+                                                Pasaporte
+                                            </option>
+                                            <option class="Registro civil" class="select-option">
+                                                Registro civil
+                                            </option>
+                                            <option class="NIUP" class="select-option">NIUP</option>
+                                            <option class="Menor sin identificacion" class="select-option">
+                                                Menor sin identificacion
+                                            </option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-1"></div>
+                                    <div class="form-group col-11">
+                                        <label for="documento_n" class="form-label" id="rlbndocumento">Numero de
+                                            documento</label>
+                                        <input type="text" class="form-control" id="documento_n" required />
+                                    </div>
+                                </div>
+
+                                <div class="row mb-3">
+                                    <label class="col-1 col-form-label form-ico">
+                                        <i class="fas fa-key"></i>
+                                    </label>
+                                    <div class="col-11 form-group">
+                                        <label for="pass" class="form-label"
+                                            style="z-index: 7">Contrase&ntilde;a</label>
+                                        <div class="input-group mb-3 form-group">
+                                            <input minlength="8" onkeyup="trigger()" type="password" id="pass"
+                                                class="form-control debil" required />
+                                            <span class="input-group-text debil-form" id="checkpass">
+                                                <i id="icono" class="fas fa-lock-open white"></i>
+                                                <label id="text" class="separado">Debil</label>
+                                            </span>
+                                        </div>
+                                        <span class="far fa-eye password-icono show-password pass"></span>
+                                        <div class="form-text small">
+                                            Debe contener al menos 8 caracteres, mayusculas y
+                                            minusculas.
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-check mx-auto" style="width: 320px">
+                                    <input class="form-check-input" type="checkbox" value="" id="tratamientodatos"
+                                        required />
+                                    <div class="form-text">
+                                        <label class="form-check-label" for="tratamientodatos">
+                                            Tratamiento de datos personales
+                                        </label>
+                                        <label class="datos" id="autorizotxt">No, autorizo el tratamiento de mis datos
+                                            personales y
+                                            lo terminos y condiciones de uso.</label>
+                                        <a href="https://corporativo.compensar.com/proteccion-de-datos"
+                                            target="_blank">Conocer mas.</a>
+                                    </div>
+                                </div>
+
+                                <div class="separador"></div>
+                                <div class="mx-auto d-grid gap-2">
+                                    <br />
+                                    <button class="btn btn-primary" type="submit">
+                                        Crear cuenta
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br />
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"
+        integrity="sha384-SR1sx49pcuLnqZUnnPwx6FCym0wLsk5JZuNx2bPPENzswTNFaQU1RDvt3wT4gWFG"
+        crossorigin="anonymous"></script>
+    <script src="../lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="../lib/indicativo/js/intlTelInput.js"></script>
+</body>
+
+</html>
+<script type="text/javascript" scr="../lib/js/select.js"></script>
+<script type="text/javascript">
+    function recuperar() {
+        var documento = $("#documento").val();
+
+        if (documento.trim() == "") {
+            alert("para recuperar tu cuenta debes digitar tu documento");
+        } else {
+            localStorage.setItem("documento", documento);
+            location.href = "recuperar.html";
+        }
+    }
+    function ingresar() {
+        var documento = $("#documento").val();
+        var tipodoc = $("#tipodoc").val();
+        var contrasena = $("#password").val();
+        console.log(documento + " " + tipodoc + " " + contrasena);
+        if (
+            documento.trim() == "" ||
+            tipodoc.trim() == "" ||
+            contrasena.trim() == ""
+        ) {
+            alert("existen campos vacios");
+        } else {
+            str = tipodoc + documento;
+            usuario = window.btoa(str);
+
+            loginConfirmed(usuario);
+            saveCredentials(documento, tipodoc, contrasena);
+        }
+    }
+
+    function loginConfirmed(token){
+        //Android
+        try{
+            HostApp.loginConfirmed(token);
+        }catch(error){
+            console.log(error);
+        }
+    }
+
+    function saveCredentials(idNumber, idType, password){
+        //Android
+        try{
+            HostApp.rememberUser(idNumber, idType, password);
+        }catch(error){
+            console.log(error);
+        }
+    }
+
+    function fingerprintAuth(){
+        //Android
+        try{
+            var usuario = HostApp.getUser();
+            $("#documento").val(usuario.idNumber);
+            $("#tipodoc").val(usuario.idType);
+            $("#password").val(usuario.password);
+            $("#btnEnter").trigger('click');
+        }catch(error){
+            console.log(error);
+        }
+    }
+
+    function fingerprintAuthAvailable(){
+        //Android
+        try{
+            return HostApp.fingerprintAuthAvailable();
+        }catch(error){
+            console.log(error);
+        }
+    }
+
+    $(document).ready(function ($) {
+        $("#alertvalida").fadeIn();
+        setTimeout(function () {
+            $("#alertvalida").fadeOut();
+        }, 2000);
+
+        $("#myTab a").click(function (e) {
+            e.preventDefault();
+            $(this).tab("show");
+        });
+        localStorage.clear();
+
+        $(".show-password").click(function () {
+            showpass = $(this);
+            password = document.querySelector("#password");
+            pass = document.querySelector("#pass");
+            if (password.type === "text") {
+                password.type = "password";
+                showpass.removeClass("fa-eye-slash").addClass("fa-eye");
+            } else {
+                password.type = "text";
+                showpass.removeClass("fa-eye").addClass("fa-eye-slash");
+            }
+
+            if (pass.type === "text") {
+                pass.type = "password";
+                showpass.removeClass("fa-eye-slash").addClass("fa-eye");
+            } else {
+                pass.type = "text";
+                showpass.removeClass("fa-eye").addClass("fa-eye-slash");
+            }
+        });
+    });
+    document.querySelector("#drtipodoc").addEventListener("click", function () {
+        document.querySelector("#rlbndocumento").textContent =
+            document.querySelector("#rtipodoc").value;
+    });
+    document.querySelector("#dtipodoc").addEventListener("click", function () {
+        document.querySelector("#lbndocumento").textContent =
+            document.querySelector("#tipodoc").value;
+    });
+    textcomp =
+        "No, autorizo el tratamiento de mis datos personales y lo terminos y condiciones de uso.";
+    document
+        .querySelector("#tratamientodatos")
+        .addEventListener("click", function () {
+            if (document.querySelector("#autorizotxt").textContent == textcomp) {
+                document.querySelector("#autorizotxt").textContent =
+                    "Si, autorizo el tratamiento de mis datos personales y lo terminos y condiciones de uso.";
+            } else {
+                document.querySelector("#autorizotxt").textContent =
+                    "No, autorizo el tratamiento de mis datos personales y lo terminos y condiciones de uso.";
+            }
+        });
+
+    function registro() {
+        var documento = $("#documento").val();
+        localStorage.setItem("documento", documento);
+    }
+    function valido() {
+        var documento = $("#documento_n").val();
+        localStorage.setItem("documento", documento);
+        console.log(documento);
+        window.location.href = "registro.html";
+    }
+
+    const input = document.querySelector("#pass");
+    const checkpass = document.querySelector("#checkpass");
+    const icono = document.querySelector("#icono");
+    const text = document.querySelector("#text");
+    let regExpDebil = /[a-z]/;
+    //let regExpMejor = /\d+/;
+    let regExpMejor = /[A-Z]/;
+    let regExpIdeal = /.[!,@,#,$,%,&,*,?,_,-,~,^,(,)]/;
+
+    function trigger() {
+        if (input.value != "") {
+            if (
+                input.value.length <= 4 &&
+                (input.value.match(regExpDebil) ||
+                    input.value.match(regExpMejor) ||
+                    input.value.match(regExpIdeal))
+            )
+                no = 1;
+            if (
+                input.value.length >= 8 &&
+                ((input.value.match(regExpDebil) && input.value.match(regExpMejor)) ||
+                    (input.value.match(regExpMejor) && input.value.match(regExpIdeal)) ||
+                    (input.value.match(regExpDebil) && input.value.match(regExpIdeal)))
+            )
+                no = 2;
+            if (
+                input.value.length >= 8 &&
+                input.value.match(regExpDebil) &&
+                input.value.match(regExpMejor) &&
+                input.value.match(regExpIdeal)
+            )
+                no = 3;
+            if (no == 1) {
+                text.textContent = "Debil";
+                checkpass.classList.add("debil-form");
+                input.classList.add("debil");
+                icono.classList.add("fa-lock-open");
+            }
+            if (no == 2) {
+                text.textContent = "Mejor";
+                checkpass.classList.add("mejor-form");
+                input.classList.add("mejor");
+                icono.classList.add("fa-lock");
+                icono.classList.remove("fa-lock-open");
+            } else {
+                checkpass.classList.remove("mejor-form");
+                input.classList.remove("mejor");
+                icono.classList.add("fa-lock-open");
+                icono.classList.remove("fa-lock");
+            }
+            if (no == 3) {
+                text.textContent = "Ideal";
+                checkpass.classList.add("ideal-form");
+                input.classList.add("ideal");
+                icono.classList.add("fa-lock");
+                icono.classList.remove("fa-lock-open");
+            } else {
+                checkpass.classList.remove("ideal-form");
+                input.classList.remove("ideal");
+                icono.classList.add("fa-lock-open");
+                icono.classList.remove("fa-lock");
+            }
+
+            $(".show-password").click(function () {
+                showpass = $(this);
+                password = document.querySelector("#pass");
+                if (password.type === "text") {
+                    password.type = "password";
+                    showpass.removeClass("fa-eye-slash").addClass("fa-eye");
+                } else {
+                    password.type = "text";
+                    showpass.removeClass("fa-eye").addClass("fa-eye-slash");
+                }
+            });
+        }
+    }
+
+    var x, i, j, l, ll, selElmnt, a, b, c;
+    /*look for any elements with the class "custom-select":*/
+    x = document.getElementsByClassName("custom-select");
+    l = x.length;
+    for (i = 0; i < l; i++) {
+        selElmnt = x[i].getElementsByTagName("select")[0];
+        ll = selElmnt.length;
+        /*for each element, create a new DIV that will act as the selected item:*/
+        a = document.createElement("DIV");
+        a.setAttribute("class", "select-selected");
+        a.innerHTML = selElmnt.options[selElmnt.selectedIndex].innerHTML;
+        x[i].appendChild(a);
+        /*for each element, create a new DIV that will contain the option list:*/
+        b = document.createElement("DIV");
+        b.setAttribute("class", "select-items select-hide");
+        for (j = 1; j < ll; j++) {
+            /*for each option in the original select element,
+          create a new DIV that will act as an option item:*/
+            c = document.createElement("DIV");
+            c.innerHTML = selElmnt.options[j].innerHTML;
+            c.addEventListener("click", function (e) {
+                /*when an item is clicked, update the original select box,
+                and the selected item:*/
+                var y, i, k, s, h, sl, yl;
+                s = this.parentNode.parentNode.getElementsByTagName("select")[0];
+                sl = s.length;
+                h = this.parentNode.previousSibling;
+                for (i = 0; i < sl; i++) {
+                    if (s.options[i].innerHTML == this.innerHTML) {
+                        s.selectedIndex = i;
+                        h.innerHTML = this.innerHTML;
+                        y = this.parentNode.getElementsByClassName("same-as-selected");
+                        yl = y.length;
+                        for (k = 0; k < yl; k++) {
+                            y[k].removeAttribute("class");
+                        }
+                        this.setAttribute("class", "same-as-selected");
+                        break;
+                    }
+                }
+                h.click();
+            });
+            b.appendChild(c);
+        }
+        x[i].appendChild(b);
+        a.addEventListener("click", function (e) {
+            /*when the select box is clicked, close any other select boxes,
+            and open/close the current select box:*/
+            e.stopPropagation();
+            closeAllSelect(this);
+            this.nextSibling.classList.toggle("select-hide");
+            this.classList.toggle("select-arrow-active");
+        });
+    }
+    function closeAllSelect(elmnt) {
+        /*a function that will close all select boxes in the document,
+      except the current select box:*/
+        var x,
+            y,
+            i,
+            xl,
+            yl,
+            arrNo = [];
+        x = document.getElementsByClassName("select-items");
+        y = document.getElementsByClassName("select-selected");
+        xl = x.length;
+        yl = y.length;
+        for (i = 0; i < yl; i++) {
+            if (elmnt == y[i]) {
+                arrNo.push(i);
+            } else {
+                y[i].classList.remove("select-arrow-active");
+            }
+        }
+        for (i = 0; i < xl; i++) {
+            if (arrNo.indexOf(i)) {
+                x[i].classList.add("select-hide");
+            }
+        }
+    }
+    /*if the user clicks anywhere outside the select box,
+  then close all select boxes:*/
+    document.addEventListener("click", closeAllSelect);
+</script>

@@ -1,0 +1,85 @@
+<div class="container">
+        <div class="row">
+        <div class="card position-absolute top-50 start-50 translate-middle col-md-5 col-lg-5">
+            <div class="card-body">
+                <button type="button" class="btn-close" aria-label="Close" onclick=" location.href='index.html'"></button>
+            <h3 class="card-title text-center"><img src="../media/logo_compensar.png" class="logo"></h3>
+            <div class="row">
+                <div class="col-auto me-auto ">
+                    <small class="text-muted">Elije un metodo de recuperaci&oacute;n de contrase&ntilde;a:</small>
+                </div>
+                <div style="margin-top:20px"></div>
+                <input type="radio" class="btn-check" id="mail" autocomplete="off" >
+                <label class="btn btn-confirmacion" for="mail">
+                        <div class="row">
+                            <span class="col-1" ><i class="far fa-envelope"></i></span>
+                            <div class="col">
+                                <small>Recibiras un codigo de recuperacion a tu correo:</small>
+                                <br>
+                                <label class="oscuro fw-bolder">correo@correo.co</label>
+                            </div>
+                        </div>
+                    </label>
+                    <hr>
+                    <input type="radio" class="btn-check" id="tel" autocomplete="off">
+                    <label class="btn btn-confirmacion" for="tel">
+                        <div class="row">
+                            <span class="col-1" ><i class="fas fa-mobile-alt"></i></span>
+                            <div class="col">
+                                <small>Recibiras un mensaje de texto (SMS) en:</small>
+                                <br>
+                                <label class="oscuro fw-bolder">+57 31785444</label>
+                            </div>
+                        </div>
+                    </label>
+            </div>
+            
+        <div class="justify-content-md-end end">
+            <br>
+            <a class="btn btn-primary"  role="button" onclick="check()">Continuar</a>
+        </div> 
+        <div class="text-center sin-espacio" style="font-size: 0.9em;">
+            <small class="text-muted">Mis medios de contacto no son correctos, <a href="#" onclick="auten()"> resolver</a></small>
+        </div>
+
+        </div>
+        </div>
+    </div>
+    </div>
+    <script type="text/javascript" src="../lib/js/funciones_otp.js"></script>
+    <script>
+        $(document).ready(function(){
+            var buttons = document.querySelectorAll('.btn')
+            buttons.forEach(function (button) {
+                var button = new bootstrap.Button(button);
+                button.toggle();
+            });
+
+        });
+        function auten(){
+        $('#contenido').load('componentes/alertaonboarding.html');
+        }
+
+        function check(){
+            let documento = localStorage.getItem('documento');
+            console.log(localStorage.length);
+            if(document.querySelector('#tel').checked || document.querySelector('#mail').checked)
+            {
+                
+                if(document.querySelector('#tel').checked)
+                {
+                    console.log("tel check");
+                    phone();
+                }
+                if( document.querySelector('#mail').checked)
+                {
+                    console.log("mail check");
+                    email();
+                }
+                
+            }else{
+                alert("no has seleccionado nada");
+            }
+            
+        }
+    </script>

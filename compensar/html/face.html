@@ -1,0 +1,91 @@
+<!-- <div id="vu.sop" style="margin: auto; width: 640px; height: 480px; background-color: black; overflow: hidden"> -->
+    <div id="vu.sop.ui" >
+        <div id="vu.sop.ui.videoContainer">
+            <!-- VIDEO -->
+            <video id="vu.sop.ui.video" autoplay muted playsinline> </video>
+
+            <!-- DOC -->
+            <div id="vu.sop.ui.document.background" class="vu.sop.ui.document.background"></div>
+            <!--<div id="vu.sop.ui.document.box"> </div>-->
+
+            <!-- FACE -->
+            <div id="vu.sop.ui.faceCircleLeft"        class="vu.sop.ui.faceCircle" style="transform: rotate(180deg);"></div>
+            <div id="vu.sop.ui.faceCircleLeftTop"     class="vu.sop.ui.faceCircle" style="transform: rotate(225deg);"></div>
+            <div id="vu.sop.ui.faceCircleTop"         class="vu.sop.ui.faceCircle" style="transform: rotate(270deg);"></div>
+            <div id="vu.sop.ui.faceCircleRightTop"    class="vu.sop.ui.faceCircle" style="transform: rotate(315deg);"></div>
+            <div id="vu.sop.ui.faceCircleRight"       class="vu.sop.ui.faceCircle" ></div>
+            <div id="vu.sop.ui.faceCircleRightBottom" class="vu.sop.ui.faceCircle" style="transform: rotate(45deg);"></div>
+            <div id="vu.sop.ui.faceCircleBottom"      class="vu.sop.ui.faceCircle" style="transform: rotate(90deg);"></div>
+            <div id="vu.sop.ui.faceCircleLeftBottom"  class="vu.sop.ui.faceCircle" style="transform: rotate(135deg);"></div>
+            <div id="vu.face.ui.gestures.circle"      class="vu.sop.ui.faceCircle" ></div>
+
+            <div id="vu.sop.ui.faceDot"></div>
+            <div id="vu.sop.ui.faceOk"></div>
+
+            <canvas id='vu.sop.ui.faceTransferCanvas'></canvas>
+            <canvas id='vu.sop.ui.documentFace' style="display: none;"></canvas>
+        </div>
+
+
+        <!-- USER -->
+        <div id="vu.sop.ui.userContainer" class="vu.sop.ui.fullSizeDiv">
+            <div class="vu.sop.ui.innerVerticalAlign" style="margin-top: -2em;">
+                <form id="vu.sop.ui.userForm" action="#" onsubmit="let send = vu.face.auth.userDo(); return false;">
+                <div class="vu.sop.input-group vu.sop.mb-3">
+                    <input minlength="5"
+                           id='vu.sop.ui.userName'
+                           type="email"
+                           class="vu.sop.form-control"
+                           placeholder="Correo de usuario"
+                           aria-describedby="basic-addon2"
+                           pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$">
+                    <div class="vu.sop.input-group-append">
+                        <button id='vu.sop.ui.userNameSendBtn' class="vu.sop.btn vu.sop.btn-outline-secondary" type="submit">
+                            Iniciar
+                        </button>
+                    </div>
+                </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Alert -->
+        <div id="vu.sop.ui.alert" class="vu.sop.ui.fullSizeDiv">
+            
+        </div>
+
+        <!-- LOADING -->
+        <div id="vu.sop.ui.whiteLoading" class="vu.sop.ui.fullSizeDiv">
+            <div id="vu.sop.ui.whiteLoadingImg" class="vu.sop.ui.innerVerticalAlign">
+            </div>
+        </div>
+
+        <div id="vu.sop.ui.loading" class="vu.sop.ui.fullSizeDiv">
+            <div id="vu.sop.ui.loadingImg" class="vu.sop.ui.innerVerticalAlign">
+                
+            </div>
+        </div>
+
+        <!-- COUNTER -->
+        <div id="vu.sop.ui.counter" class="vu.sop.ui.innerBottomRight">
+            <span class="fa-stack fa-4x">
+                <span class="fa fa-circle fa-stack-2x"></span>
+                <strong id="vu.sop.ui.counterText" class="fa-stack-1x fa-inverse">
+                </strong>
+            </span>
+        </div>
+
+        <!-- Bottom Text -->
+        <div id="vu.sop.ui.bottomText"></div>
+
+        <!-- Photo flash effect -->
+        <div id="vu.sop.ui.flash" class="vu.sop.ui.fullSizeDiv"></div>
+
+        <!-- Alert -->
+        <div id="vu.sop.ui.endScreen" class="vu.sop.ui.fullSizeDiv" style="background-color: white;">
+            <div class="vu.sop.ui.innerVerticalAlign">
+                Onboarding finalizado
+            </div>
+        </div>
+    </div>
+<!-- </div> -->

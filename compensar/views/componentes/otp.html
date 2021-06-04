@@ -1,0 +1,64 @@
+
+
+<div class="container">
+        <div class="row">
+        <div class="card position-absolute top-50 start-50 translate-middle col-md-5 col-lg-4">
+            <div class="card-body">
+                <button type="button" class="btn-close" aria-label="Close" onclick=" location.href='index.html'"></button>
+                <br>
+                <h3 class="card-title text-center"><img src="../media/logo_compensar.png" class="logo"></h3>
+            <div class="row">
+                <div class="me-auto text-center">
+                    <p id="mailtext" class="text-muted">
+                        <br>
+                        
+                    </p>
+                </div>
+                <div class="me-auto text-center">
+                    <p class="text-muted">Ingresa el codigo de 4 digitos para continuar</p>
+                </div>
+                <div class="d-flex justify-content-center">
+                    <br>
+                    <div class="col-4">
+                        <input type="number" id="codigo" class="form-control">
+                    </div>
+                    <br>
+                </div>
+                <div class="text-center">
+                    <p class="item sin-espacio">Tiempo restante</p>
+                    <p id="countdowd" class="text-center">
+                        02:00 min
+                    </p>
+                </div>
+
+                
+            </div>
+            <div class="mx-auto d-grid gap-2" >
+                <a id="ingresar" href="#" class="btn btn-primary" onclick="pass();" role="button">Continuar</a>
+                <a id="reenviar" href="#" class="btn btn-secondary" role="button">Reenviar codigo</a>
+            </div>
+            <div class="text-center sin-espacio" style="font-size: 0.9em;">
+                <small class="text-muted">&iquest;No recibes el codigo?<a href="#" onclick="onboarding();" > Intenta con otro m&eacute;dio</a></small>
+            </div>
+        
+        </div>
+        </div>
+    </div>
+    </div>
+    <script type="text/javascript" src="../lib/js/codigo.js"></script>
+    <script>
+    $(document).ready(function(){ 
+        let documento = localStorage.getItem('documento');
+            console.log(localStorage.length);
+
+        let texto = localStorage.getItem('texto');
+        document.querySelector('#mailtext').innerHTML = texto;
+        //localStorage.clear();
+    });
+    function onboarding(){
+        $('#contenido').load('componentes/alertaonboarding.html');
+    }
+    function pass(){
+        window.location.href = "cambio.html";
+    }
+</script>

@@ -1,0 +1,438 @@
+<style>
+.custom-select:hover{
+    border-color:teal !important;
+}
+@media screen and (min-width: 750px) {
+    .ocultar-div{
+        display:none;
+    }
+}
+@media screen and (min-width: 555px) {
+    .ocultar-tab{
+        display:none;
+    }
+}
+@media screen and (max-width: 555px) {
+    #myTab{
+        width: 100%;
+    }
+}
+</style>
+
+
+<div class="container">
+        <div class="row">
+        <div class="card position-absolute top-50 start-50 translate-middle col-lg-6">
+            <div class="card-body">
+                <button type="button" class="btn-close" aria-label="Close" onclick=" location.href='index.html'"></button>
+            <h3 class="card-title">  
+            <img class="img-fluid" src="../media/logo_compensar.png">
+            </h3>
+            <br>
+            <div id="alertvalida" class="alert alert-warning d-flex align-items-center visually-hidden  alert-dismissible fade show" role="alert">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-exclamation-triangle-fill flex-shrink-0 me-2" viewBox="0 0 16 16">
+                    <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+                </svg>
+                <div>
+                   Existen campos vacios
+                </div>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+
+            <div class="row mx-auto justify-content-xs-center">
+                <div class="col-auto me-auto "><small class="text-muted">Completa los siguientes campos para crear tu cuenta:</small></div>
+                <div class="col-auto justify-content-xs-center mx-auto" style="width: 100%;">
+                    <div class="ocultar-tab" style="height: 20px;"></div>
+                    <ul class="nav justify-content-xs-center " id="myTab" role="tablist" id="nav-tabs">
+                        <li class="nav-item" role="presentation">
+                            <button type="button" class="btn-floating fas fa-angle-left" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" role="tab"></button>
+                        </li>
+                        <li>
+                            <samll id="text-pasos" class="text-center text-muted">Paso 1 de 2 </samll>
+                        </li>  
+                        <li class="nav-item order-2" role="presentation">  
+                            <button type="button" class="btn-floating fas fa-angle-right nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab"></button>
+                        </li>
+                    </ul>
+                </div>
+              </div>
+
+
+              <div class="tab-content">
+    <div class="tab-pane active" id="home" role="tabpanel" aria-labelledby="home-tab">
+        <form>
+                <div class="row">
+                
+                    <div class="col-md-6">
+                        <div class="row">
+                            <label class="col-1 col-form-label form-ico">
+                                <i class="far fa-user"></i>
+                            </label>
+                            <div class="form-group col">
+                                <label for="pnombre" class="form-label">Primer nombre*</label>
+                                <input type="text" class="form-control" id="pnombre" required>
+                            </div> 
+                        </div> 
+                        <div class="row">
+                            <div class="col-1"></div>
+                            <div class="form-group col">
+                                <label for="snombre" class="form-label">Segundo nombre*</label>
+                                <input type="text" class="form-control" id="snombre"s>
+                            </div> 
+                        </div> 
+                        <div class="row">
+                            <div class="col-1"></div>
+                            <div class="form-group col">
+                                <label for="papellido" class="form-label">Primer apellido*</label>
+                                <input type="text" class="form-control" id="papellido" required>
+                            </div> 
+                        </div> 
+                        
+                    </div>
+                    
+                    <div class="col-md-6">
+                        <div class="row">
+                            <div class="col-1"></div>
+                            <div class="form-group col">
+                                <label for="sapellido" class="form-label">Segundo apellido*</label>
+                                <input type="text" class="form-control" id="sapellido" required>
+                            </div> 
+                        </div> 
+                        <div class="row">
+                            <div class="col-1"></div>
+                         <div class="form-group custom-select col">  
+                            <label for="genero" class="form-label">Genero</label>  
+                            <select id="genero" name="genero"  required>
+                                <option disabled> Seleccione </option>
+                                <option value="M" >Masculino</option>
+                                <option value="F"  >Femenino</option>
+                            </select>
+                            <i></i>
+                        </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-1"></div>
+                        <div class="form-group custom-select col">  
+                            <label for="estadoc" class="form-label">Estado civil</label>  
+                            <select id="estadoc" required>
+                                <option disabled> Seleccione </option>
+                                <option value="soltero" class="select-option">Soltero</option>
+                                <option value="casado" class="select-option">Casado</option>
+                                <option value="union libre" class="select-option">Union Libre</option>
+                                <option value="viudo" class="select-option">Viudo</option>
+                                <option value="separado" class="select-option">Separado</option>
+                            </select>
+                        </div>
+                        </div>
+                    </div>
+                    
+            </div>
+            <br>
+        <div class="d-grid gap-2 d-sm-flex justify-content-md-end">
+        <ul class="nav d-sm-block d-grid gap-3" id="myTab" role="tablist" >
+            <li class="nav-item flex-sm-grow-1 d-grid gap-3" role="presentation">
+                <button class="btn btn-primary nav-link p-2 mx-auto" style="width: 100%;" data-bs-toggle="tab" data-bs-target="#profile" id="seg" type="button" role="tab">Siguiente</button>
+            </li>
+        </ul>
+            </div>
+            </form>
+        
+    </div>
+    <div class="tab-pane" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+    <form autocomplete="off" method="post" action="javascript:validado();">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="row">
+                            <label class="col-1 col-form-label form-ico">
+                                <i class="fas fa-birthday-cake"></i>
+                            </label>
+                            <div class="form-group col">
+                                <label for="fechaNac" class="form-label">Fecha de nacimiento</label>
+                                <input type="date" class="form-control" id="fechaNac" required>
+       
+                            </div> 
+                        </div> 
+
+                        <div class="row">
+                            <div class="col-1">
+                                <label class="col-1 col-form-label form-ico">
+                                    <i class="fas fa-mobile-alt"></i>
+                                </label>
+                            </div>
+                            <div class="form-group col">
+                                <span class="form-group" style="padding-left: 3em;">
+                                    <label for="tel" class="form-label" style="z-index: 100; ">Numero telefonico</label>
+                                </span>
+                                <input type="tel" id="phone" class="form-control col-12" required>
+                            </div>
+                        </div>
+
+                        
+                        <div class="row">
+                            <div class="col-1">
+                                <label class="col-1 col-form-label form-ico">
+                                    <i class="far fa-envelope"></i>
+                                </label>
+                            </div>
+                            <div class="form-group col">
+                                <label for="correo" class="form-label text-correo">Correo electronico</label>
+                                <input id="correo" onkeyup="email()" type="email" class="form-control"  required>
+                                <div class="form-text small"><label id="div-correo"></label> </div>
+                            </div>
+                            
+                        </div> 
+                        
+                    </div>
+                    
+                    <div class="col-md-6 align-self-center">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="autorizomail" required>
+                            <div class="form-check-label">
+                            <label class="form-check-label" for="autorizomail">
+                              Tratamiento de datos personales
+                            </label>
+                            <br>
+                            <small id="textautorizomail" class="datos">No, autorizo recibir mensajes por correo electronico con informacion de Compensar.</small>
+                            <small class="datos"><a href="https://corporativo.compensar.com/proteccion-de-datos" target="_blank">Conocer mas.</a></small>
+                            </label>
+                          </div>
+                        </div>
+                          <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="autorizotel" required>
+                            <label class="form-check-label" for="autorizotel">
+                              Tratamiento de datos personales
+                            </label>
+                            <br>
+                            <small id="textautorizotel" class="datos">No, autorizo recibir mensajes de texto (SMS) con informacion de Compensar.</small>
+                            <small class="datos"><a href="https://corporativo.compensar.com/proteccion-de-datos" target="_blank">Conocer mas.</a>
+                            </small>
+                            </label>
+                          </div>
+                    </div>
+                
+            </div>
+        <div class="ocultar-div" style="height: 20px;"></div>
+        <div class="d-grid gap-2 d-md-block text-lg-end end">
+
+            <button id="final-registro" class="btn btn-primary" type="submit">Crear cuenta</button>
+        </div>
+        </form>
+    </div>
+  </div>
+  
+
+              
+        
+        </div>
+        </div>
+    </div>
+    </div>
+    <script class="iti-load-utils" async="" src="../lib/indicativo/js/utils.js"></script>
+    <script>
+        $( document ).ready(function() {
+            fecha = new Date();
+            dia = fecha.getDate();
+            dia = (dia < 10 ? "0" : "") + dia
+            mes = fecha.getMonth()+1;
+            mes = (mes < 10 ? "0" : "") + mes
+            ano = fecha.getFullYear();
+            date = (ano+"-"+mes+"-"+dia);
+            fechamax = (ano-18)+"-"+mes+"-"+dia;
+            document.querySelector("#fechaNac").max = fechamax;
+            document.querySelector("#fechaNac").value = fechamax;
+        });
+
+       var input = document.querySelector("#phone");
+        window.intlTelInput(input, {
+            preferredCountries: ['co', 'us'],
+            utilsScript: "build/js/utils.js",
+        });
+        
+        const correo = document.querySelector("#correo");
+        const text = document.querySelector(".text-correo");
+        const div = document.querySelector("#div-correo");
+        let regExp = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+
+        function email(){
+            if(!correo.value.match(regExp)){
+                correo.style.borderColor = "#dc3545";
+                text.style.color ="#dc3545";
+                correo.style.backgroundColor = "white";
+                div.textContent="Ingrese un correo valido";
+                div.style.color= "#dc3545";
+                div.classList.remove("visually-hidden");
+            }else{
+                correo.style.borderColor= "#ff6600";
+                text.style.color ="#495057";
+                div.classList.add("visually-hidden");
+            }
+        }
+        
+
+        function validado(){
+                    
+                    alerta = document.querySelector("#alertvalida");
+                    var pnombre = $('#pnombre').val();
+                    var snombre = $('#snombre').val();
+                    var papellido = $('#papellido').val();
+                    var sapellido = $('#sapellido').val();
+                    var genero = $('#genero').val();
+                    var estadoc = $('#estadoc').val();
+                    var fechanac = $('#fechaNac').val();
+                    var telefono = $('#phone').val();
+                    var correo = $('#correo').val();
+                    if (pnombre.trim() == "" || 
+                      papellido.trim() == "" || 
+                      sapellido.trim() == "" ||
+                      genero.trim() == "" || 
+                      estadoc.trim() == "" ||
+                      fechanac.trim() == "" || 
+                      telefono.trim() == "" ||
+                      correo.trim() == ""){
+                        alerta.classList.remove("visually-hidden");
+                        setTimeout(function() {
+                            alerta.classList.add("visually-hidden");           
+                        },4000);
+                      }else{
+                        $('#contenido').load('componentes/infoonboarding.html');
+                        localStorage.setItem('pnombre',pnombre);
+                        localStorage.setItem('snombre',snombre);
+                        localStorage.setItem('papellido',papellido);
+                        localStorage.setItem('sapellido',sapellido);
+                        localStorage.setItem('genero',genero);
+                        localStorage.setItem('estadoc',estadoc);
+                        localStorage.setItem('fechanac',fechanac);
+                        localStorage.setItem('telefono',telefono);
+                        localStorage.setItem('correo',correo);
+                      }
+            }
+
+        $(document).ready(function(){
+            
+            const textcomp = "No, autorizo recibir mensajes por correo electronico con informacion de Compensar.";
+            const textcomp2 = "No, autorizo recibir mensajes de texto (SMS) con informacion de Compensar.";
+            
+            const tab1 = document.querySelector('#home-tab');
+            const tab2 = document.querySelector('#profile-tab');
+            const seg = document.querySelector('#seg');
+            const text = document.querySelector('#text-pasos');
+            const finalreg = document.querySelector('#final-registro');
+            
+            tab1.addEventListener("click", function(){
+                tab1.classList.remove("btn-active");
+                text.innerHTML = "Paso 1 de 2";
+            });
+            tab2.addEventListener("click", function(){
+                tab1.classList.add("btn-active");
+                text.innerHTML = "Paso 2 de 2";
+            });
+            seg.addEventListener("click", function(){
+                tab1.classList.add("btn-active");
+                text.innerHTML = "Paso 2 de 2";
+            });
+            document.querySelector('#autorizomail').addEventListener("click",function(){
+                if(document.querySelector("#textautorizomail").textContent == textcomp){
+                    document.querySelector("#textautorizomail").textContent =("Si, autorizo recibir mensajes por correo electronico con informacion de Compensar.");
+                }
+                else{
+                    document.querySelector("#textautorizomail").textContent = ("No, autorizo recibir mensajes por correo electronico con informacion de Compensar.");
+                
+                }
+            });
+
+            document.querySelector('#autorizotel').addEventListener("click",function(){
+                if(document.querySelector("#textautorizotel").textContent == textcomp2){
+                    document.querySelector("#textautorizotel").textContent =("Si, autorizo recibir mensajes de texto (SMS) con informacion de Compensar.");
+                }
+                else{
+                    document.querySelector("#textautorizotel").textContent = ("No, autorizo recibir mensajes de texto (SMS) con informacion de Compensar.");
+                
+                }
+            });
+            
+            
+        });
+
+        
+
+
+var x, i, j, l, ll, selElmnt, a, b, c;
+/*look for any elements with the class "custom-select":*/
+x = document.getElementsByClassName("custom-select");
+l = x.length;
+for (i = 0; i < l; i++) {
+    selElmnt = x[i].getElementsByTagName("select")[0];
+  ll = selElmnt.length;
+  /*for each element, create a new DIV that will act as the selected item:*/
+  a = document.createElement("DIV");
+  a.setAttribute("class", "select-selected");
+  a.innerHTML = selElmnt.options[selElmnt.selectedIndex].innerHTML;
+  x[i].appendChild(a);
+  /*for each element, create a new DIV that will contain the option list:*/
+  b = document.createElement("DIV");
+  b.setAttribute("class", "select-items select-hide");
+  for (j = 1; j < ll; j++) {
+    /*for each option in the original select element,
+    create a new DIV that will act as an option item:*/
+    c = document.createElement("DIV");
+    c.innerHTML = selElmnt.options[j].innerHTML;
+    c.addEventListener("click", function(e) {
+        /*when an item is clicked, update the original select box,
+        and the selected item:*/
+        var y, i, k, s, h, sl, yl;
+        s = this.parentNode.parentNode.getElementsByTagName("select")[0];
+        sl = s.length;
+        h = this.parentNode.previousSibling;
+        for (i = 0; i < sl; i++) {
+          if (s.options[i].innerHTML == this.innerHTML) {
+            s.selectedIndex = i;
+            h.innerHTML = this.innerHTML;
+            y = this.parentNode.getElementsByClassName("same-as-selected");
+            yl = y.length;
+            for (k = 0; k < yl; k++) {
+              y[k].removeAttribute("class");
+            }
+            this.setAttribute("class", "same-as-selected");
+            break;
+          }
+        }
+        h.click();
+    });
+    b.appendChild(c);
+  }
+  x[i].appendChild(b);
+  a.addEventListener("click", function(e) {
+      /*when the select box is clicked, close any other select boxes,
+      and open/close the current select box:*/
+      e.stopPropagation();
+      closeAllSelect(this);
+      this.nextSibling.classList.toggle("select-hide");
+      this.classList.toggle("select-arrow-active");
+    });
+}
+function closeAllSelect(elmnt) {
+  /*a function that will close all select boxes in the document,
+  except the current select box:*/
+  var x, y, i, xl, yl, arrNo = [];
+  x = document.getElementsByClassName("select-items");
+  y = document.getElementsByClassName("select-selected");
+  xl = x.length;
+  yl = y.length;
+  for (i = 0; i < yl; i++) {
+    if (elmnt == y[i]) {
+      arrNo.push(i)
+    } else {
+      y[i].classList.remove("select-arrow-active");
+    }
+  }
+  for (i = 0; i < xl; i++) {
+    if (arrNo.indexOf(i)) {
+      x[i].classList.add("select-hide");
+    }
+  }
+}
+/*if the user clicks anywhere outside the select box,
+then close all select boxes:*/
+document.addEventListener("click", closeAllSelect);
+
+        </script>

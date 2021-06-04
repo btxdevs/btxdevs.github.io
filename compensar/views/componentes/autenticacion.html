@@ -1,0 +1,78 @@
+<style>
+body{
+    background: #f4f6f6 ;
+}
+#vu\.sop {
+    background-color: white;
+}
+#vu\.sop\.ui\.videoContainer {
+    background-color: white;
+}
+</style>
+    <!--VU-->
+    <link href="../css/main.css" rel="stylesheet">
+    <link href="../css/vu.sop.ui.css" rel="stylesheet">
+
+<div class="container">
+    <div class="card position-absolute top-50 start-50 translate-middle col-lg-6 col-md-8 col-11">
+        <div class="card-body">
+            <button type="button" class="btn-close" aria-label="Close" onclick=" location.href='../index.html'"></button>
+            <h3 class="card-title text-center"><img src="../media/logo_compensar.png" class="logo"></h3>
+            <div class="row">
+                <div id="vu.sop" >
+                    <div id="vu.sop.ui" >
+                        <div id="vu.sop.ui.whiteLoading" class="vu.sop.ui.fullSizeDiv" style="display: block">
+                            <div class="vu.sop.ui.innerVerticalAlign">
+                                <img class="vu.sop.ui.loadingImg" src="data:image/svg+xml;base64,PHN2ZyBhcmlhLWhpZGRlbj0idHJ1ZSIgZm9jdXNhYmxlPSJmYWxzZSIgZGF0YS1wcmVmaXg9ImZhcyIgZGF0YS1pY29uPSJjb2ciIGNsYXNzPSJzdmctaW5saW5lLS1mYSBmYS1jb2cgZmEtdy0xNiIgcm9sZT0iaW1nIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48cGF0aCBmaWxsPSJjdXJyZW50Q29sb3IiIGQ9Ik00ODcuNCAzMTUuN2wtNDIuNi0yNC42YzQuMy0yMy4yIDQuMy00NyAwLTcwLjJsNDIuNi0yNC42YzQuOS0yLjggNy4xLTguNiA1LjUtMTQtMTEuMS0zNS42LTMwLTY3LjgtNTQuNy05NC42LTMuOC00LjEtMTAtNS4xLTE0LjgtMi4zTDM4MC44IDExMGMtMTcuOS0xNS40LTM4LjUtMjcuMy02MC44LTM1LjFWMjUuOGMwLTUuNi0zLjktMTAuNS05LjQtMTEuNy0zNi43LTguMi03NC4zLTcuOC0xMDkuMiAwLTUuNSAxLjItOS40IDYuMS05LjQgMTEuN1Y3NWMtMjIuMiA3LjktNDIuOCAxOS44LTYwLjggMzUuMUw4OC43IDg1LjVjLTQuOS0yLjgtMTEtMS45LTE0LjggMi4zLTI0LjcgMjYuNy00My42IDU4LjktNTQuNyA5NC42LTEuNyA1LjQuNiAxMS4yIDUuNSAxNEw2Ny4zIDIyMWMtNC4zIDIzLjItNC4zIDQ3IDAgNzAuMmwtNDIuNiAyNC42Yy00LjkgMi44LTcuMSA4LjYtNS41IDE0IDExLjEgMzUuNiAzMCA2Ny44IDU0LjcgOTQuNiAzLjggNC4xIDEwIDUuMSAxNC44IDIuM2w0Mi42LTI0LjZjMTcuOSAxNS40IDM4LjUgMjcuMyA2MC44IDM1LjF2NDkuMmMwIDUuNiAzLjkgMTAuNSA5LjQgMTEuNyAzNi43IDguMiA3NC4zIDcuOCAxMDkuMiAwIDUuNS0xLjIgOS40LTYuMSA5LjQtMTEuN3YtNDkuMmMyMi4yLTcuOSA0Mi44LTE5LjggNjAuOC0zNS4xbDQyLjYgMjQuNmM0LjkgMi44IDExIDEuOSAxNC44LTIuMyAyNC43LTI2LjcgNDMuNi01OC45IDU0LjctOTQuNiAxLjUtNS41LS43LTExLjMtNS42LTE0LjF6TTI1NiAzMzZjLTQ0LjEgMC04MC0zNS45LTgwLTgwczM1LjktODAgODAtODAgODAgMzUuOSA4MCA4MC0zNS45IDgwLTgwIDgweiI+PC9wYXRoPjwvc3ZnPg==">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    <script src="../js/vu.face.auth.js"></script>
+    <script src="../lib/admin/js/agregar_auth.js"></script>
+ 
+    <script>
+        localStorage.setItem('texto',"Text");
+        let documento = localStorage.getItem('documento');
+            console.log(localStorage.length);
+        
+
+        //localStorage.clear();
+
+
+    vu.face.auth.load('../').then(
+        function() {
+            let text = localStorage.getItem('documento');
+            document.getElementById('vu.sop.ui.userName').value = text;
+            document.getElementById('vu.sop.ui.userName').setAttribute("disabled", "");
+            vu.sop.api.headers = {
+              'x-access-apikey': '9be36b98-612a-6a25-15c3-a7a7217b8fce'
+            };            
+            vu.sop.api.host = 'https://compensar.sop.dev.infomediaservice.online/vu-onboarding-rest/';      
+            
+            vu.face.auth.start().then(
+                function(res) {
+                    if (res.identical === true){
+                        vu.sop.ui.alert('Autenticaci&oacute;n Exitosa<br>Confianza ' + Math.round(response.confidence*100) + '%').then(function (res) {
+                            var score = Math.round(response.confidence*100);
+                            location.href = "cambio.html";
+                        })
+                    } else {
+                        vu.sop.ui.alert('Autenticaci&oacute;n Fallida').then(function (res) {
+                            window.location.reload(true);
+                        })
+                    }
+                }
+            )
+        },function(value) {
+            console.log('re',value);
+        }
+    )
+
+
+    </script>
+  

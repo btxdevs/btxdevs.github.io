@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="iso-8859-1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Compensar</title>
+    <script src="https://kit.fontawesome.com/7a1fec5b9a.js" crossorigin="anonymous"></script>
+    <meta content="text/html;" charset="utf-8" />
+    <link href="../lib/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../lib/css/style.css" />
+    <link rel="stylesheet" href="../lib/jquery-ui-1.12.1/jquery-ui.css" />
+
+    <link rel="stylesheet" href="../lib/indicativo/css/intlTelInput.css" />
+
+    <script src="../lib/jquery-3.6.0.min.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="
+            card
+            position-absolute
+            top-50
+            start-50
+            translate-middle
+            col-md-5 col-lg-4
+          ">
+                <div class="card-body">
+                    <button type="button" class="btn-close" aria-label="Close"
+                        onclick=" location.href='index.html'"></button>
+                    <br />
+                    <h3 class="card-title text-center">
+                        <img src="../media/logo_compensar.png" class="logo" />
+                    </h3>
+                    <div class="row">
+                        <div class="me-auto text-center">
+                            <p class="text-muted">
+                                Ingresa la nueva contrase&ntilde;a para acceder a Compensar.
+                            </p>
+                            <p>correo@correo.com</p>
+                        </div>
+                        <form>
+                            <div class="row mb-3">
+                                <label class="col-1 col-form-label form-ico">
+                                    <i class="fas fa-key"></i>
+                                </label>
+                                <div class="col-11 form-group">
+                                    <label for="pass" class="form-label" style="z-index: 100">Contrase&ntilde;a</label>
+                                    <div class="input-group mb-3 form-group">
+                                        <input minlength="8" onkeyup="trigger()" type="password" id="pass"
+                                            class="form-control debil" required />
+                                        <span class="input-group-text debil-form" id="checkpass">
+                                            <i id="icono" class="fas fa-lock-open white"></i>
+                                            <label id="text" class="separado">Debil</label>
+                                        </span>
+                                    </div>
+                                    <span class="far fa-eye password-icono show-password pass"></span>
+                                    <div class="form-text small">
+                                        Debe contener al menos 8 caracteres, mayusculas y
+                                        minusculas.
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="mx-auto d-grid gap-2">
+                        <a id="ingresar" href="#" class="btn btn-primary" role="button"
+                            onclick="verifica()">Continuar</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"
+        integrity="sha384-SR1sx49pcuLnqZUnnPwx6FCym0wLsk5JZuNx2bPPENzswTNFaQU1RDvt3wT4gWFG"
+        crossorigin="anonymous"></script>
+    <script src="../lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="../lib/indicativo/js/intlTelInput.js"></script>
+</body>
+
+</html>
+<script type="text/javascript" src="../lib/js/funciones_otp.js"></script>
+<script>
+    function verifica() {
+        const text = document.querySelector("#text");
+        if (text.textContent == "Mejor" || text.textContent == "Ideal") {
+            exito();
+        } else {
+            alert("la seguridad de la contrase&ntilde;a no es buena");
+        }
+    }
+    function exito() {
+        token = Math.random().toString(36).substr(3);
+        token = token + Math.random().toString(36).substr(3);
+        let documento = localStorage.getItem("documento");
+        location.href = "index.html";
+    }
+
+    $(".show-password").click(function () {
+        showpass = $(this);
+        password = document.querySelector("#pass");
+        if (password.type === "text") {
+            password.type = "password";
+            showpass.removeClass("fa-eye-slash").addClass("fa-eye");
+        } else {
+            password.type = "text";
+            showpass.removeClass("fa-eye").addClass("fa-eye-slash");
+        }
+    });
+
+    const input = document.querySelector("#pass");
+    const checkpass = document.querySelector("#checkpass");
+    const icono = document.querySelector("#icono");
+    const text = document.querySelector("#text");
+    let regExpDebil = /[a-z]/;
+    //let regExpMejor = /\d+/;
+    let regExpMejor = /[A-Z]/;
+    let regExpIdeal = /.[!,@,#,$,%,&,*,?,_,-,~,^,(,)]/;
+
+    function trigger() {
+        if (input.value != "") {
+            if (
+                input.value.length <= 4 &&
+                (input.value.match(regExpDebil) ||
+                    input.value.match(regExpMejor) ||
+                    input.value.match(regExpIdeal))
+            )
+                no = 1;
+            if (
+                input.value.length >= 8 &&
+                ((input.value.match(regExpDebil) && input.value.match(regExpMejor)) ||
+                    (input.value.match(regExpMejor) && input.value.match(regExpIdeal)) ||
+                    (input.value.match(regExpDebil) && input.value.match(regExpIdeal)))
+            )
+                no = 2;
+            if (
+                input.value.length >= 8 &&
+                input.value.match(regExpDebil) &&
+                input.value.match(regExpMejor) &&
+                input.value.match(regExpIdeal)
+            )
+                no = 3;
+            if (no == 1) {
+                text.textContent = "Debil";
+                checkpass.classList.add("debil-form");
+                input.classList.add("debil");
+                icono.classList.add("fa-lock-open");
+            }
+            if (no == 2) {
+                text.textContent = "Mejor";
+                checkpass.classList.add("mejor-form");
+                input.classList.add("mejor");
+                icono.classList.add("fa-lock");
+                icono.classList.remove("fa-lock-open");
+            } else {
+                checkpass.classList.remove("mejor-form");
+                input.classList.remove("mejor");
+                icono.classList.add("fa-lock-open");
+                icono.classList.remove("fa-lock");
+            }
+            if (no == 3) {
+                text.textContent = "Ideal";
+                checkpass.classList.add("ideal-form");
+                input.classList.add("ideal");
+                icono.classList.add("fa-lock");
+                icono.classList.remove("fa-lock-open");
+            } else {
+                checkpass.classList.remove("ideal-form");
+                input.classList.remove("ideal");
+                icono.classList.add("fa-lock-open");
+                icono.classList.remove("fa-lock");
+            }
+        }
+    }
+</script>
