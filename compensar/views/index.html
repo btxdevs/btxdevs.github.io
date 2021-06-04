@@ -315,14 +315,18 @@
     function fingerprintAuth(){
         //Android
         try{
-            var usuario = JSON.parse(HostApp.getUser());
-            $("#documento").val(usuario.idNumber);
-            $("#tipodoc").val(usuario.idType);
-            $("#password").val(usuario.password);
-            $("#btnEnter").trigger('click');
+            HostApp.fingerprintAuth();
         }catch(error){
             console.log(error);
         }
+    }
+
+    function enterCredentials(userJson){
+         var user = JSON.parse(userJson);
+            $("#documento").val(user.idNumber);
+            $("#tipodoc").val(user.idType);
+            $("#password").val(user.password);
+            $("#btnEnter").trigger('click');
     }
 
     function fingerprintAuthAvailable(){
