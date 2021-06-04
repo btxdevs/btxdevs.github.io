@@ -148,8 +148,8 @@
                                 </div>
                             </form>
                                 <div class="mx-auto d-grid gap-2 mt-3">
-                                    <button id="btnFingerprint" class="btn btn-primary" onclick="fingerprintAuth()">
-                                        Autenticacion por huella
+                                    <button id="btnBiometric" class="btn btn-primary" onclick="fingerprintAuth()">
+                                        Autenticacion biometrica
                                     </button>
                                 </div>
                         </div>
@@ -312,7 +312,7 @@
         }
     }
 
-    function fingerprintAuth(){
+    function biometricAuth(){
         //Android
         try{
             HostApp.fingerprintAuth();
@@ -328,16 +328,29 @@
             $("#btnEnter").trigger('click');
     }
 
-    function fingerprintAuthAvailable(){
+    function biometricAuthAvailable(){
         //Android
         try{
             return HostApp.fingerprintAuthAvailable();
         }catch(error){
             console.log(error);
         }
+
+        return false;
+    }
+
+    function biometricSetup(){
+        if(biometricAuthAvailable()){
+            $("#btnBiometric").show();
+        }else{
+             $("#btnBiometric").hide();
+        }
     }
 
     $(document).ready(function ($) {
+
+        biometricSetup();
+
         $("#alertvalida").fadeIn();
         setTimeout(function () {
             $("#alertvalida").fadeOut();
