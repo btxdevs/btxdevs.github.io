@@ -1,0 +1,13 @@
+<html>
+	<head>
+	</head>
+	<body>
+		<p>
+		</p>
+		<script type="text/javascript">
+			fetch('http://ip-api.com/json?lang=es')
+			  .then(response => response.json())
+			  .then(data => document.getElementsByTagName("p")[0].innerHTML = JSON.stringify(data));
+		</script>
+	<body/>
+</html>
